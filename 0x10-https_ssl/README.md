@@ -254,3 +254,7 @@ sylvain@ubuntu$
 -   GitHub repository: `alx-system_engineering-devops`
 -   Directory: `0x10-https_ssl`
 -   File: `100-redirect_http_to_https`
+
+
+some handouts :
+www.digitalocean.com/community/tutorials/how-to-secure-haproxy-with-let-s-encrypt-on-ubuntu-14-04                                                                                               certbot.eff.org/instructions?ws=haproxy&os=ubuntufocal
