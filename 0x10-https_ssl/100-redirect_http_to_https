@@ -1,0 +1,21 @@
+defaults
+  mode http
+  timeout connect 5000
+  timeout client 10000
+  timeout server 10000
+frontend myfrontend
+        bind 0:80
+	bind *:443 ssl crt /etc/haproxy/certs/www.jeliltopcode.tech.pem
+        mode http
+	acl letsencrypt-acl path_beg /.well-known/acme-challenge/
+	use_backend letsencrypt-backend if letsencrypt-acl
+	default_backend mybackend
+        
+backend mybackend
+	balance roundrobin
+	http-request redirect scheme https code 301 if !{ ssl_fc }
+	server 166020-web-01 54.146.87.177:80 check
+        server 166020-web-02 52.91.160.201:80 check
+
+backend letsencrypt-backend
+	server letsencrypt 127.0.0.1:8888
